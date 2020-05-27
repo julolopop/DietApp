@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "dietApp"
+    }
+  },
+  "defaultProject": "dietApp",
+  "cli": {
+    "analytics": false
+  }
 }

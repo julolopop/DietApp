@@ -1,0 +1,21 @@
+:host {
+    overflow-x: auto;
+    display: block;
+    text-align: center;
+}
+img {
+    margin: 0 auto;
+}
+.header {
+    background: url('/assets/cabecera.png') no-repeat;
+    display: block;
+    height: 150px;
+    background-size: contain;
+
+    span {
+        font-size: 60px;
+        font-weight: bold;
+        padding-top: 37px;
+        display: block;
+    }
+}

@@ -1,8 +1,74 @@
-<!-- <mat-form-field>
-    <mat-label>Favorite food</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
-        {{food.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field> -->
+<mat-form-field>
+  <mat-label>Peso (kg)</mat-label>
+  <mat-select [(value)]="user.weight" >
+    <mat-option *ngFor="let item of weight" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Altura (cm)</mat-label>
+  <mat-select [(value)]="user.height">
+    <mat-option *ngFor="let item of height" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Edad</mat-label>
+  <mat-select [(value)]="user.age">
+    <mat-option *ngFor="let item of age" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<!-- 
+<mat-form-field>
+  <mat-label>CH</mat-label>
+  <mat-select [(value)]="user.ch">
+    <mat-option *ngFor="let item of ch" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Comidas</mat-label>
+  <mat-select [(value)]="user.meals">
+    <mat-option *ngFor="let item of meals" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field> -->
+<!-- 
+<mat-form-field>
+  <mat-label>Indice de grasa</mat-label>
+  <mat-select [(value)]="user.fat">
+    <mat-option *ngFor="let item of fat" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field> -->
+
+<mat-form-field>
+  <mat-label>Movimiento</mat-label>
+  <mat-select [(value)]="user.fm">
+    <mat-option *ngFor="let item of fm" [value]="item.value">
+     {{item.viewValue}} 
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Entremamiento</mat-label>
+  <mat-select [(value)]="user.fe">
+    <mat-option *ngFor="let item of fe" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<button (click)="gotoNext()">Continuar</button>

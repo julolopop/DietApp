@@ -12,6 +12,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http'; 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { InfoComponent } from './template/info/info.component';
+import { FatComponent } from './template/fat/fat.component';
+import { SliderModule } from 'angular-image-slider';
+import { ObjetiveComponent } from './template/objetive/objetive.component';
+import { FoodComponent } from './template/food/food.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +30,25 @@ import { MatOptionModule } from '@angular/material/core';
     LoginTComponent,
     DataRegisterComponent,
     GenderComponent,
-    GeneralComponent
+    GeneralComponent,
+    InfoComponent,
+    FatComponent,
+    ObjetiveComponent,
+    FoodComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    HttpClientModule,
+    SliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

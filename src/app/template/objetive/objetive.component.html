@@ -1,0 +1,18 @@
+<mat-form-field>
+  <mat-label>Tipo de dieta</mat-label>
+  <mat-select [(value)]="user.diet">
+    <mat-option *ngFor="let item of diet" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<mat-form-field>
+  <mat-label>Magnitud</mat-label>
+  <mat-select [(value)]="user.magnitud">
+    <mat-option *ngFor="let item of magnitud" [value]="item.value">
+      {{item.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -8,5 +8,7 @@ export interface UserData {
     fat: number;
     fm: number;
     fe: number;
-    Diet: string;
+    diet: number;
+    food: boolean[];
+    magnitud:string;
 }

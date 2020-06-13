@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { UserData } from 'src/app/_interface/user-data';
-import { CampaniaService } from 'src/app/_service/Campania.service';
 import { user } from 'src/app/_global/global';
+import { CampaniaService } from 'src/app/_service/Campania.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-general',
-  templateUrl: './general.component.html',
-  styleUrls: ['./general.component.scss']
+  selector: 'app-objetive',
+  templateUrl: './objetive.component.html',
+  styleUrls: ['./objetive.component.scss']
 })
-export class GeneralComponent implements OnInit {
+export class ObjetiveComponent implements OnInit {
 
   public user : UserData = user;
   public weight: any[] = [];
@@ -23,8 +23,11 @@ export class GeneralComponent implements OnInit {
   public diet: any[] = [];
   public magnitud: any[] = [];
 
-
-  constructor(private campaniaService:CampaniaService,private route:Router) { }
+  constructor(private campaniaService:CampaniaService,private route:Router) {
+    this.campaniaService.getCampanas().subscribe(res => {
+      this.user = res;
+    });
+   }
 
   ngOnInit(): void {
     for ( let i = 40; i < 130; i++ ) {
@@ -52,19 +55,13 @@ export class GeneralComponent implements OnInit {
       this.fat.push({ value: i, viewValue: i+'%' })
     }
 
-    this.fm.push({value:0,viewValue:'Trabajo sentado, 30 min de caminata'});
-    this.fm.push({value:1,viewValue:'Trabajo sentado , 1h caminata'});
-    this.fm.push({value:2,viewValue:'Trabajo sentado, 2h caminata'});
-    this.fm.push({value:3,viewValue:'Trabajo de pie con desplazamientos ligeros'});
-    this.fm.push({value:4,viewValue:'Trabajo con movimiento abundante'});
-    this.fm.push({value:5,viewValue:'Trabajo intenso'});
+    this.fm.push({value:0,viewValue:'Sedentario'});
+    this.fm.push({value:1,viewValue:'Sedentario Activo'});
+    this.fm.push({value:2,viewValue:'Sedentario Activo II'});
+    this.fm.push({value:3,viewValue:'Ligeramente Activo'});
+    this.fm.push({value:4,viewValue:'Moderadamente activo'});
+    this.fm.push({value:5,viewValue:'Muy Activo'});
 
-    this.fe.push({value:0,viewValue:'No entrenado : Solamente paseos puntuales o actividades recreativas ocasionales.'});
-    this.fe.push({value:1,viewValue:'Entrenamiento de fuerza '});
-    this.fe.push({value:2,viewValue:'Entrenamiento de fuerza-hipertrofia : '});
-    this.fe.push({value:3,viewValue:'Entrenamiento de resistencia : '});
-    this.fe.push({value:4,viewValue:'Entrenamiento concurrente : '});
-    this.fe.push({value:5,viewValue:'Deportista de élite : '});
 
     this.diet.push({ value: 0, viewValue: 'Pérdida de grasa' });
     this.diet.push({ value: 1, viewValue: 'Mantenimiento' });
@@ -76,9 +73,4 @@ export class GeneralComponent implements OnInit {
     this.magnitud.push({ value: 1, viewValue: 'Agresivo' });
   }
 
- 
-  gotoNext(){
-    this.campaniaService.setCampanas(this.user);
-    this.route.navigate(['info']);
-  }
 }

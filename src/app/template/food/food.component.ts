@@ -31,5 +31,10 @@ export class FoodComponent implements OnInit {
     this.campaniaService.setCampanas(this.user);
   }
 
+ 
+  gotoNext(){
+    this.campaniaService.setCampanas(this.user);
+    this.route.navigate(['info']);
+  }
 
 }

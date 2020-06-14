@@ -73,4 +73,8 @@ export class ObjetiveComponent implements OnInit {
     this.magnitud.push({ value: 1, viewValue: 'Agresivo' });
   }
 
+  gotoNext(){
+    this.campaniaService.setCampanas(this.user);
+    this.route.navigate(['data/food']);
+  }
 }

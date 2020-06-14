@@ -1,6 +1,16 @@
 :host{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 100px 100px 0px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 100px 100px 0px 100px;
+}
+
+::ng-deep {
+  .mat-select-panel .mat-optgroup-label,
+  .mat-select-panel .mat-option2 {
+    line-height: 1rem !important;
+    display: block;
+    width: 100%;
+    white-space: normal;
+  }
 }

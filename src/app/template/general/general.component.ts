@@ -52,19 +52,19 @@ export class GeneralComponent implements OnInit {
       this.fat.push({ value: i, viewValue: i+'%' })
     }
 
-    this.fm.push({value:0,viewValue:'Trabajo sentado, 30 min de caminata'});
+    this.fm.push({value:0,viewValue:'Trabajo sentado 30 min de caminata'});
     this.fm.push({value:1,viewValue:'Trabajo sentado , 1h caminata'});
     this.fm.push({value:2,viewValue:'Trabajo sentado, 2h caminata'});
     this.fm.push({value:3,viewValue:'Trabajo de pie con desplazamientos ligeros'});
     this.fm.push({value:4,viewValue:'Trabajo con movimiento abundante'});
     this.fm.push({value:5,viewValue:'Trabajo intenso'});
 
-    this.fe.push({value:0,viewValue:'No entrenado : Solamente paseos puntuales o actividades recreativas ocasionales.'});
-    this.fe.push({value:1,viewValue:'Entrenamiento de fuerza '});
-    this.fe.push({value:2,viewValue:'Entrenamiento de fuerza-hipertrofia : '});
-    this.fe.push({value:3,viewValue:'Entrenamiento de resistencia : '});
-    this.fe.push({value:4,viewValue:'Entrenamiento concurrente : '});
-    this.fe.push({value:5,viewValue:'Deportista de élite : '});
+    this.fe.push({value:0,viewValue:'No entrenado',viewValueMin:'Solamente paseos puntuales o actividades recreativas ocasionales.'});
+    this.fe.push({value:1,viewValue:'Entrenamiento de fuerza ',viewValueMin:'aa'});
+    this.fe.push({value:2,viewValue:'Entrenamiento de fuerza-hipertrofia',viewValueMin:'aa'});
+    this.fe.push({value:3,viewValue:'Entrenamiento de resistencia',viewValueMin:'aa'});
+    this.fe.push({value:4,viewValue:'Entrenamiento concurrente',viewValueMin:'aa'});
+    this.fe.push({value:5,viewValue:'Deportista de élite',viewValueMin:'aa'});
 
     this.diet.push({ value: 0, viewValue: 'Pérdida de grasa' });
     this.diet.push({ value: 1, viewValue: 'Mantenimiento' });
@@ -79,6 +79,6 @@ export class GeneralComponent implements OnInit {
  
   gotoNext(){
     this.campaniaService.setCampanas(this.user);
-    this.route.navigate(['info']);
+    this.route.navigate(['data/fat']);
   }
 }

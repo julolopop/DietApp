@@ -1,0 +1,79 @@
+
+
+1 solo datos
+
+Peso
+Altura
+Edad
+cantidad de movimiento diario : card mostras descripción
+Tipo de entrenamiento : card mostras descripción
+2 solo datos
+
+Porcentaje de grasa
+
+3 objetivo
+
+Objetivo
+Magnitud (no selecionable)
+
+
+
+1 mantenimiento
+
+solo datos;
+
+2 ganacia de masa muscular
+solo datos.
+
+1) Superávit ligero
++2
+2) Superávit moderado
++3
+3) Superávit alto
++4
+4) Refeed o Realimentación
++5
+
+
+3 perdida de grasa
+
+1) Déficit ligero
+-3
+2) Déficit moderado:
+-4
+3) Déficit alto
+-5
+4) Restricción agresiva o Minicut
+-6
+
+
+3 Comida
+
+nº comidas que comera al dia
+
+4 entrenamiento
+solo datos.
+
+Ayunas
+despues Desayuno
+despues Media Mañana
+despues Almuerzo
+despues Merienda
+despues Cena
+
+5 modelo dietetico
+Solo datos.
+
+Alto en carbohidratos :60
+Moderado en carbohidratos:40
+Bajo en carbohidratos:20
+Muy bajo en carbohidratos:0
+
+6.
+calcular 
+Porciones diarias totales
+Porciones de grasas totales
+Porciones de proteínas totales
+Porciones de carbohidratos totales
+
+

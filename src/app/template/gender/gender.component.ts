@@ -10,7 +10,11 @@ import { user } from 'src/app/_global/global';
 
 export class GenderComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  public user;
+
+  constructor(private route:Router) {
+    this.user = user;
+   }
 
   ngOnInit(): void {
   }

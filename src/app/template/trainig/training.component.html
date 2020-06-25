@@ -1,0 +1,9 @@
+
+<div *ngFor="let item of training;let i = index">
+    <input type="checkbox" name="" id="" (click)="check(i)"/>
+    {{item.text}}
+</div>
+
+
+<br>
+<button (click)="gotoNext()">Continuar</button>

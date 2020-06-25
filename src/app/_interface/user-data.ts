@@ -10,5 +10,6 @@ export interface UserData {
     fe: number;
     diet: number;
     food: boolean[];
-    magnitud:string;
+    magnitud:number;
+    training:number;
 }

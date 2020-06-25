@@ -22,6 +22,8 @@ import { FatComponent } from './template/fat/fat.component';
 import { SliderModule } from 'angular-image-slider';
 import { ObjetiveComponent } from './template/objetive/objetive.component';
 import { FoodComponent } from './template/food/food.component';
+import { trainingComponent } from './template/trainig/training.component';
+import { ChComponent } from './template/ch/ch.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { FoodComponent } from './template/food/food.component';
     InfoComponent,
     FatComponent,
     ObjetiveComponent,
-    FoodComponent
+    FoodComponent,
+    trainingComponent,
+    ChComponent
   ],
   imports: [
     BrowserModule,

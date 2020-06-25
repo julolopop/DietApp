@@ -8,6 +8,8 @@ import { InfoComponent } from './template/info/info.component';
 import { FatComponent } from './template/fat/fat.component';
 import { ObjetiveComponent } from './template/objetive/objetive.component';
 import { FoodComponent } from './template/food/food.component';
+import { trainingComponent } from './template/trainig/training.component';
+import { ChComponent } from './template/ch/ch.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
     { path: 'general', component: GeneralComponent },
     { path: 'objetive', component: ObjetiveComponent },
     { path: 'food', component: FoodComponent },
+    { path: 'trainig', component: trainingComponent },
+    { path: 'ch', component: ChComponent },
     { path: '', redirectTo :'gender' , pathMatch: 'full' },
   ]},
   { path: 'info', component: InfoComponent },

@@ -2,8 +2,8 @@
 <p>{{correction}}</p>
 <p>carorias</p>
 <p>{{carorias}}</p>
-<p>lot</p>
-<p>{{lot}}</p>
+<p>totalPorciones</p>
+<p>{{totalPorciones}}</p>
 
 
 <p>cg</p>
@@ -12,7 +12,25 @@
 <p>{{cp}}</p>
 <p>pp</p>
 <p>{{pp}}</p>
-<p>minG</p>
-<p>{{minG}}</p>
+<p>grasa</p>
+<p>{{grasa}}</p>
 <p>magro</p>
 <p>{{magro}}</p>
+
+
+<p>Porciones diarias totales</p>
+<p>{{totalPorciones}}</p>
+<p>Porciones de grasas totales</p>
+<p>{{grasa}}</p>
+<p>Porciones de proteínas totales</p>
+<p>{{pp}}</p>
+<p>Porciones de carbohidratos totales</p>
+<p>{{carbo}}</p>
+
+<div *ngFor="let item of porcionesComida">
+    <p>{{item.nameView}} - {{item.training}}</p>
+    <p>porcionesP = {{item.porcionesP}}</p>
+    <p>porcionesC = {{item.porcionesC}}</p>
+    <p>porcionesG = {{item.porcionesG}}</p>
+</div>
+

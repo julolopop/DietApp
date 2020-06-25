@@ -7,9 +7,9 @@ Altura
 Edad
 cantidad de movimiento diario : card mostras descripción
 Tipo de entrenamiento : card mostras descripción
-2 solo datos
+solo datos
 
-Porcentaje de grasa
+2 Porcentaje de grasa
 
 3 objetivo
 
@@ -51,6 +51,10 @@ solo datos.
 
 nº comidas que comera al dia
 
+
+
+
+
 4 entrenamiento
 solo datos.
 
@@ -77,3 +81,21 @@ Porciones de proteínas totales
 Porciones de carbohidratos totales
 
 
+Porciones totales de los snack
+----
+Reparto de tipos de porciones en los snack | reparto snack snak null
+    solo 1) 
+    snack post entreno 3) → 2) obligatorio 1 proteina  
+
+ALGORITMO Reparto de porciones restantes y por tipo en cada comida
+:C ↑  :G ↓ :P ↓ Entreno
+
+establecer un mínimo de comidas en 1
+correciones minimo de calorias
+
+Juntar proteinas con grasas ??
+info to edit 
+
+------
+
+7.  

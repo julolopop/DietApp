@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { user } from 'src/app/_global/global';
 
 @Component({
   selector: 'app-fat',
@@ -18,6 +19,7 @@ export class FatComponent implements OnInit {
 
  
   gotoNext(){
+    user.fat = 15;
     this.route.navigate(['data/objetive']);
   }
 }

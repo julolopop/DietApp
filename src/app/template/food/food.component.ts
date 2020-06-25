@@ -20,9 +20,9 @@ export class FoodComponent implements OnInit {
   ngOnInit(): void {
     this.user = user;
 
-    this.campaniaService.getCampanas().subscribe(res => {
-      this.user = res;
-    });
+    // this.campaniaService.getCampanas().subscribe(res => {
+    //   this.user = res;
+    // });
   }
 
   check(pos) {
@@ -34,7 +34,7 @@ export class FoodComponent implements OnInit {
  
   gotoNext(){
     this.campaniaService.setCampanas(this.user);
-    this.route.navigate(['info']);
+    this.route.navigate(['data/trainig']);
   }
 
 }

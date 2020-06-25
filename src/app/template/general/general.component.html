@@ -26,7 +26,7 @@
 </mat-form-field>
 
 <mat-form-field>
-  <mat-label>Movimiento</mat-label>
+  <mat-label>cantidad de movimiento diario</mat-label>
   <mat-select [(value)]="user.fm">
     <mat-option class="mat-option2" *ngFor="let item of fm" [value]="item.value">
       {{item.viewValue}}
@@ -35,7 +35,7 @@
 </mat-form-field>
 
 <mat-form-field>
-  <mat-label>Entremamiento</mat-label>
+  <mat-label>Tipo de entrenamiento</mat-label>
   <mat-select [(value)]="user.fe">
     <mat-option class="mat-option2" *ngFor="let item of fe" [value]="item.value">
       {{item.viewValue}}

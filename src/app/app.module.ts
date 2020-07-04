@@ -24,6 +24,7 @@ import { ObjetiveComponent } from './template/objetive/objetive.component';
 import { FoodComponent } from './template/food/food.component';
 import { trainingComponent } from './template/trainig/training.component';
 import { ChComponent } from './template/ch/ch.component';
+import { EditComponent } from './template/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ChComponent } from './template/ch/ch.component';
     ObjetiveComponent,
     FoodComponent,
     trainingComponent,
-    ChComponent
+    ChComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

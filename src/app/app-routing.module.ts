@@ -10,6 +10,7 @@ import { ObjetiveComponent } from './template/objetive/objetive.component';
 import { FoodComponent } from './template/food/food.component';
 import { trainingComponent } from './template/trainig/training.component';
 import { ChComponent } from './template/ch/ch.component';
+import { EditComponent } from './template/edit/edit.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: 'food', component: FoodComponent },
     { path: 'trainig', component: trainingComponent },
     { path: 'ch', component: ChComponent },
+    { path: 'edit', component: EditComponent },
     { path: '', redirectTo :'gender' , pathMatch: 'full' },
   ]},
   { path: 'info', component: InfoComponent },

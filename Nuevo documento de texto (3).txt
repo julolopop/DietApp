@@ -82,19 +82,46 @@ Porciones de carbohidratos totales
 
 
 Porciones totales de los snack
-----
 Reparto de tipos de porciones en los snack | reparto snack snak null
     solo 1) 
     snack post entreno 3) → 2) obligatorio 1 proteina  
-
 ALGORITMO Reparto de porciones restantes y por tipo en cada comida
 :C ↑  :G ↓ :P ↓ Entreno
 
-establecer un mínimo de comidas en 1
-correciones minimo de calorias
 
-Juntar proteinas con grasas ??
-info to edit 
+----
+
+1.cambiar porcion por parte 
+2.
+  default | nuevo objetivo | total 
+     black        blue        red/green
+     rect b 
+
+3. total === nuevo objetivo.
+    error toast.
+
+
+4.
+    ..Diario..
+        default | nuevo objetivo | total 
+            1           1             1
+        ..Comida..   
+            default | nuevo objetivo | total  
+                1           1             1
+            --categoria-- 
+                defeault | actual  
+                    1         1
+                    
+5. secionado/collapse
+
+
+
+
+* menú porciones (menuless)
+*establecer un mínimo de comidas en 1
+?correciones minimo de calorias
+*entrenamiento 
+
 
 ------
 

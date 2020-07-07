@@ -25,6 +25,7 @@ import { FoodComponent } from './template/food/food.component';
 import { trainingComponent } from './template/trainig/training.component';
 import { ChComponent } from './template/ch/ch.component';
 import { EditComponent } from './template/edit/edit.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { EditComponent } from './template/edit/edit.component';
     AngularFireAuthModule,
     HttpClientModule,
     SliderModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

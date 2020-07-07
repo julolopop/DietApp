@@ -36,6 +36,6 @@ export class ChComponent implements OnInit {
 
   gotoNext() {
     this.campaniaService.setCampanas(this.user);
-    this.route.navigate(['info']);
+    this.route.navigate(['data/edit']);
   }
 }

@@ -1,11 +1,85 @@
-{{totalPorciones}}
+
+<br><br>
+
+<table>
+    <tr>
+        <th>Porciones Diarias</th>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Defecto</th>
+        <th>Nuevo objetivo</th>
+        <th>Actual</th>
+    </tr>
+    <tr>
+        <td> {{totalPorciones}} </td>
+        <td>
+            <button class="left" (click)="totalPorcionesEdit(-1)">-</button>
+            {{totalPorcionesMax}} 
+            <button class="rigth" (click)="totalPorcionesEdit(+1)">+</button>
+        </td>
+        <td class="check" [ngClass]="{'error': totalPorcionesMax !== totalPorcionesSum}"> {{totalPorcionesSum}}  </td>
+    </tr>
+</table>
+
+
+<br><br>
+
 
 <div *ngIf="porcionesComidaMod">
-    <div *ngFor="let item of porcionesComidaMod; let i = index">
-        <p>{{item.nameView}} - {{item.training}}  = {{item.porcionesP+item.porcionesC+item.porcionesG+item.porcionesPG}}</p>
-        <p><span (click)="change(item ,'porcionesP',-1)">-</span> porcionesP = {{porcionesComida[i].porcionesP}}  = {{item.porcionesP}}   <span (click)="change(item ,'porcionesP',1)">+</span></p>
-        <p><span (click)="change(item ,'porcionesC',-1)">-</span> porcionesC = {{porcionesComida[i].porcionesC}}= {{item.porcionesC}}   <span (click)="change(item ,'porcionesC',1)">+</span></p>
-        <p><span (click)="change(item ,'porcionesG',-1)">-</span> porcionesG = {{porcionesComida[i].porcionesG}}  = {{item.porcionesG}}   <span (click)="change(item ,'porcionesG',1)">+</span></p>
+    <mat-accordion *ngFor="let item of porcionesComidaMod; let i = index">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{item.nameView}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{item.training}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          
+          <div>
+              
+            <table>
+                <tr>
+                    <th>Defecto</th>
+                    <th>Nuevo objetivo</th>
+                    <th>Actual</th>
+                </tr>
+                <tr>
+                    <td>{{porcionesComida[i].totalComida}}</td>
+                    <td><button class="left" (click)="totalPorcionesComidaEdit(item,-1)">-</button> {{item.totalComidaMax}} <button class="rigth" (click)="totalPorcionesComidaEdit(item,1)">+</button></td>
+                    <td  class="check" [ngClass]="{'error': item.totalComidaMax !== item.totalComida}">{{item.totalComida}}</td>
+                </tr>
+            </table>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <th>typo</th>
+                    <th>Defecto</th>
+                    <th>Modificado</th>
+                </tr>
+                <tr>
+                    <td> Proteinas </td>
+                    <td> {{porcionesComida[i].porcionesP}}</td>
+                    <td><button class="left" (click)="change(item ,'porcionesP',-1)">-</button> {{item.porcionesP}} <button class="rigth" (click)="change(item ,'porcionesP',1)">+</button></td>
+                </tr>
+                <tr>
+                    <td> Carboidratos </td>
+                    <td> {{porcionesComida[i].porcionesC}}</td>
+                    <td><button class="left"  (click)="change(item ,'porcionesC',-1)">-</button> {{item.porcionesC}} <button class="rigth" (click)="change(item ,'porcionesC',1)">+</button></td>
+                </tr>
+                <tr>
+                    <td> Grasas </td>
+                    <td> {{porcionesComida[i].porcionesG}}</td>
+                    <td><button class="left"  (click)="change(item ,'porcionesG',-1)">-</button> {{item.porcionesG}} <button class="rigth" (click)="change(item ,'porcionesG',1)">+</button></td>
+                </tr>
+            </table>
+          </div>
+    
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
-</div>
-

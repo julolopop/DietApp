@@ -2,6 +2,36 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-    margin: 100px 100px 0px 100px;
+}
+tr {
+    text-align: center;
+}
+
+th {
+    background-color: lightslategray;
+    &.head {
+        background-color: lightsteelblue;
+    }
+}
+
+table {
+    width: 100%;
+}
+
+.left {
+    position: relative;
+    float: left;
+    margin-left: 15%;
+}
+.rigth {
+    position: relative;
+    float: right;
+    margin-right: 15%;
+}
+
+.check {
+    color: green;
+    &.error {
+        color: red;
+    }
 }

@@ -118,6 +118,9 @@ ALGORITMO Reparto de porciones restantes y por tipo en cada comida
 
 
 * menú porciones (menuless)
+*canbiar entrenamiento.
+*comida post entrenamiento
+*colores 
 *establecer un mínimo de comidas en 1
 ?correciones minimo de calorias
 *entrenamiento 

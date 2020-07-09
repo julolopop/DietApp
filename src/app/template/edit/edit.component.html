@@ -29,6 +29,27 @@
 
 
 <div *ngIf="porcionesComidaMod">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title style="
+              display: flex;
+              justify-content: center;">
+                  Entrenamiento
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+            <div *ngFor="let item of training;let i = index" class="box" (click)="check(i)" [class.check]="checked[i]">
+                {{item.text}}
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <br>
+    <br>
+
     <mat-accordion *ngFor="let item of porcionesComidaMod; let i = index">
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
@@ -36,12 +57,11 @@
                 {{item.nameView}}
             </mat-panel-title>
             <mat-panel-description>
-                {{item.training}}
+                <span>{{item.training}}</span>
             </mat-panel-description>
           </mat-expansion-panel-header>
           
           <div>
-              
             <table>
                 <tr>
                     <th>Defecto</th>

@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { UserData } from 'src/app/_interface/user-data';
 import { user } from 'src/app/_global/global';
 import { CampaniaService } from 'src/app/_service/Campania.service';
+import { ToastrService } from 'ngx-toastr';
+import { DialogComponent } from 'src/app/component/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
+
 export class EditComponent implements OnInit {
   public user: UserData;
   public correction = 0;
@@ -26,9 +30,11 @@ export class EditComponent implements OnInit {
   public porcionesComidaMod;
   public panelOpenState;
 
-  constructor(private campaniaService: CampaniaService ) {
+  public training;
+  public checked;
 
-  }
+  constructor(private campaniaService: CampaniaService, private toastr: ToastrService, public dialog: MatDialog) { }
+
 
   ngOnInit(): void {
     this.campaniaService.getCampanas().subscribe(res => {
@@ -51,8 +57,49 @@ export class EditComponent implements OnInit {
       }
 
       this.init();
+
+      this.training = [];
+      this.checked = [];
+      let name = ['Ayunas', 'despues Desayuno', 'despues Media Mañana', 'despues Almuerzo', 'despues Merienda', 'despues Cena']
+
+      this.training.push({ value: 0, text: name[0] });
+
+      for (let i = 0; i < this.user.food.length; i++) {
+        const element = this.user.food[i];
+
+        if (element) {
+          this.training.push({ value: i + 1, text: name[i + 1] });
+          this.checked.push(this.user.training + 1 === i);
+        }
+      }
+
     });
+
   }
+
+  check(pos) {
+
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        for (let i = 0; i < this.checked.length; i++) {
+          this.checked[i] = false;
+        }
+
+        this.checked[pos] = !this.checked[pos];
+        this.user.training = pos;
+
+        this.porcionesComidaMod = undefined;
+        this.porciones();
+      }
+    });
+
+  }
+
 
   init() {
     let TMBH1 = 88 + (13.4 * this.user.weight) + (4.8 * this.user.height) - (5.7 * this.user.age),
@@ -64,31 +111,31 @@ export class EditComponent implements OnInit {
       FMH = [1.1, 1.2, 1.3, 1.4, 1.5, 1.7],
       FMM = [1.1, 1.2, 1.3, 1.4, 1.5, 1.6];
 
-    if ( this.user.sex === 'M')
+    if (this.user.sex === 'M')
       this.user.fat += 7;
 
-    if ( this.user.fat <= 8)
+    if (this.user.fat <= 8)
       this.correction = 1.15;
-    else if ( this.user.fat <= 10)
+    else if (this.user.fat <= 10)
       this.correction = 1.10;
-    else if ( this.user.fat <= 12)
+    else if (this.user.fat <= 12)
       this.correction = 1.05;
-    else if ( this.user.fat <= 14)
+    else if (this.user.fat <= 14)
       this.correction = 1;
-    else if ( this.user.fat <= 16)
+    else if (this.user.fat <= 16)
       this.correction = 0.95;
-    else if ( this.user.fat <= 18)
+    else if (this.user.fat <= 18)
       this.correction = 0.9;
-    else if ( this.user.fat <= 20)
+    else if (this.user.fat <= 20)
       this.correction = 0.85;
-    else if ( this.user.fat <= 25)
+    else if (this.user.fat <= 25)
       this.correction = 0.83;
     else
       this.correction = 0.8;
 
-    if ( this.user.fat < 12)
+    if (this.user.fat < 12)
       this.carorias = Math.min(this.user.sex === 'H' ? TMBH1 : TMBM1, this.user.sex === 'H' ? TMBH2 : TMBM2);
-    else if ( this.user.fat <= 18)
+    else if (this.user.fat <= 18)
       this.carorias = Math.max(this.user.sex === 'H' ? TMBH1 : TMBM1, this.user.sex === 'H' ? TMBH2 : TMBM2);
     else {
       let x = this.user.sex === 'H' ? TMBH1 : TMBM1,
@@ -97,14 +144,14 @@ export class EditComponent implements OnInit {
     }
 
 
-    if ( this.user.sex === 'H')
+    if (this.user.sex === 'H')
       this.totalPorciones = Math.round((this.carorias * this.correction * FMH[this.user.fe] / 100) * 0.95);
     else
       this.totalPorciones = Math.round((this.carorias * this.correction * FMM[this.user.fe] / 100) * 0.95);
 
-    if ( this.user.diet === 0)
+    if (this.user.diet === 0)
       this.totalPorciones -= this.user.magnitud
-    else if ( this.user.diet === 2)
+    else if (this.user.diet === 2)
       this.totalPorciones += this.user.magnitud
 
     this.totalPorcionesMax = this.totalPorciones;
@@ -116,25 +163,25 @@ export class EditComponent implements OnInit {
     this.cg = this.user.diet !== 0 ? 1 : 1.2;
     this.magro = this.user.weight - (this.user.weight * (this.user.fat / 100));
 
-    if ( this.user.fe !== 0 ) {
-      if ( this.user.diet === 1 ) {
+    if (this.user.fe !== 0) {
+      if (this.user.diet === 1) {
         this.cp = 1.8;
       } else {
-        if ( this.user.fe >= 3 ) {
+        if (this.user.fe >= 3) {
           this.cp = 2, 5;
         } else {
           this.cp = 2;
         }
       }
     } else {
-      if ( this.user.age > 60 ) {
-        if ( this.user.diet === 0 ) {
+      if (this.user.age > 60) {
+        if (this.user.diet === 0) {
           this.cp = 1.5;
         } else {
           this.cp = 1.3;
         }
       } else {
-        if ( this.user.diet === 0 ) {
+        if (this.user.diet === 0) {
           this.cp = 1.2;
         } else {
           this.cp = 1;
@@ -151,7 +198,7 @@ export class EditComponent implements OnInit {
     this.grasaM = (this.cg * 0.8 * this.user.weight * 4) / 100;
     this.grasaM = Math.round(this.grasa);
 
-    if ( this.grasa < this.grasaM ) {
+    if (this.grasa < this.grasaM) {
       this.grasa = this.grasaM < 3 ? 3 : this.grasaM;
       this.carbo = this.totalPorciones - this.pp - this.grasa;
     }
@@ -163,16 +210,17 @@ export class EditComponent implements OnInit {
     let cont = 0,
       index = 0;
 
+    this.user.training = this.user.training === this.user.food.length ? 0 : this.user.training;
     this.porcionesComida = [];
 
     let name = ['Desayuno', 'Media Mañana', 'Almuerzo', 'Merienda', 'Cena']
     let type = [1, 0, 1, 0, 1]
 
-    for ( let i = 0; i < this.user.food.length; i++ ) {
+    for (let i = 0; i < this.user.food.length; i++) {
       const element = this.user.food[i];
       this.porcionesComida.push({
         active: element,
-        training: i - 1 === this.user.training ? 'Post entrenamiento' : '',
+        training: i === this.user.training ? 'Post entrenamiento' : '',
         type: type[i],
         nameView: name[i],
         porcionesP: 0,
@@ -190,13 +238,13 @@ export class EditComponent implements OnInit {
     let pocionesPR = 0,
       pocionesCR = 0,
       pocionesGR = 0;
-    if ( snack.length === 2 ) {
-      for ( let i = 0; i < snack.length; i++ ) {
+    if (snack.length === 2) {
+      for (let i = 0; i < snack.length; i++) {
         const element = snack[i];
         let snackPor = porcionesSnack === 1 ? 2 : porcionesSnack === 2 ? 3 : 3;
-        if ( element.training !== '' ) {
+        if (element.training !== '') {
           element.porcionesP = 1;
-          element.porcionesC = Math.round(snackPor * por);
+          element.porcionesC = Math.round(snackPor * por) - 1;
           element.porcionesG = snackPor - element.porcionesP - element.porcionesC;
 
         } else {
@@ -211,9 +259,9 @@ export class EditComponent implements OnInit {
       }
     } else {
       let snackPor = porcionesSnack === 1 ? 3 : porcionesSnack === 2 ? 4 : 5;
-      if ( snack[0].training !== '' ) {
+      if (snack[0].training !== '') {
         snack[0].porcionesP = 1;
-        snack[0].porcionesC = Math.round(snackPor * por);
+        snack[0].porcionesC = Math.round(snackPor * por) - 1;
         snack[0].porcionesG = snackPor - snack[0].porcionesP - snack[0].porcionesC;
 
       } else {
@@ -227,53 +275,53 @@ export class EditComponent implements OnInit {
       pocionesGR += snack[0].porcionesG;
     }
 
-    index = this.user.training - 1;
+    index = this.user.training;
     cont = 1;
     do {
-      if ( this.porcionesComida[index].active ) {
-        if ( this.porcionesComida[index].type !== 0 ) {
+      if (this.porcionesComida[index].active) {
+        if (this.porcionesComida[index].type !== 0) {
           this.porcionesComida[index].porcionesG++;
           cont++;
         }
       }
       index++;
-      if ( index >= this.porcionesComida.length)
+      if (index >= this.porcionesComida.length)
         index = 0;
 
 
     } while (cont <= (this.grasa - pocionesGR));
 
-    index = this.user.training - 1;
+    index = this.user.training;
     cont = 1;
     do {
 
-      if ( this.porcionesComida[index].active ) {
-        if ( this.porcionesComida[index].type !== 0 ) {
+      if (this.porcionesComida[index].active) {
+        if (this.porcionesComida[index].type !== 0) {
           this.porcionesComida[index].porcionesP++;
           cont++;
         }
       }
       index++;
-      if ( index >= this.porcionesComida.length)
+      if (index >= this.porcionesComida.length)
         index = 0;
     } while (cont <= (this.pp - pocionesPR));
 
-    index = this.user.training - 1;
+    index = this.user.training;
     cont = 1;
     do {
 
-      if ( this.porcionesComida[index].active ) {
-        if ( this.porcionesComida[index].type !== 0 ) {
+      if (this.porcionesComida[index].active) {
+        if (this.porcionesComida[index].type !== 0) {
           this.porcionesComida[index].porcionesC++;
           cont++;
         }
       }
       index--
-      if ( index < 0)
+      if (index < 0)
         index = this.porcionesComida.length - 1;
     } while (cont <= (this.carbo - pocionesCR));
 
-    for ( const item of this.porcionesComida ) {
+    for (const item of this.porcionesComida) {
       item.totalComida = item.porcionesP + item.porcionesC + item.porcionesG;
       item.totalComidaMax = item.porcionesP + item.porcionesC + item.porcionesG;
     }
@@ -281,20 +329,23 @@ export class EditComponent implements OnInit {
     this.porcionesComidaMod = JSON.parse(JSON.stringify(this.porcionesComida));
   }
 
-  change(item, type, number ) {
-    if ( item[type] <= 0 && number === -1 ) {
+  change(item, type, number) {
+    if (item[type] <= 0 && number === -1) {
+      this.toastr.error('Error', 'No puedes bajar de 0');
       return;
     }
 
-    if ( item.totalComidaMax <= item.totalComida && number === 1 ) {
-      return;
-    }
-    
-    if( item.totalComida === 0 && number === -1) {
+    if (item.totalComidaMax <= item.totalComida && number === 1) {
+      this.toastr.error('Error', 'No puedes aumentar modifica todal de la comida');
       return;
     }
 
-    if ( this.totalPorcionesMax !== this.totalPorcionesSum || number === -1 ) {
+    if (item.totalComida === 0 && number === -1) {
+      this.toastr.error('Error', 'No puedes bajar de 0');
+      return;
+    }
+
+    if (this.totalPorcionesMax !== this.totalPorcionesSum || number === -1) {
       item[type] += number;
       item.totalComida += number;
       this.totalPorcionesSum += number;
@@ -302,7 +353,8 @@ export class EditComponent implements OnInit {
   }
 
   totalPorcionesEdit(number) {
-    if ( this.totalPorcionesMax === 0 && number === -1 ) {
+    if (this.totalPorcionesMax === 0 && number === -1) {
+      this.toastr.error('Error', 'No puedes bajar de 0');
       return;
     }
 
@@ -316,11 +368,13 @@ export class EditComponent implements OnInit {
       totalSumMax += food.totalComidaMax;
     }
 
-    if ( this.totalPorcionesMax <= totalSumMax && number === 1 ) {
+    if (this.totalPorcionesMax <= totalSumMax && number === 1) {
+      this.toastr.error('Error', 'No puedes aumentar modifica todal diario');
       return;
     }
 
-    if ( item.totalComidaMax === 0 && number === -1 ) {
+    if (item.totalComidaMax === 0 && number === -1) {
+      this.toastr.error('Error', 'No puedes bajar de 0');
       return;
     }
 

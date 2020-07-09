@@ -89,19 +89,18 @@ ALGORITMO Reparto de porciones restantes y por tipo en cada comida
 :C ↑  :G ↓ :P ↓ Entreno
 
 
-----
 
-1.cambiar porcion por parte 
-2.
+6.1.cambiar porcion por parte 
+6.2.
   default | nuevo objetivo | total 
      black        blue        red/green
      rect b 
 
-3. total === nuevo objetivo.
+6.3. total === nuevo objetivo.
     error toast.
 
 
-4.
+6.4.
     ..Diario..
         default | nuevo objetivo | total 
             1           1             1
@@ -112,18 +111,19 @@ ALGORITMO Reparto de porciones restantes y por tipo en cada comida
                 defeault | actual  
                     1         1
                     
-5. secionado/collapse
+6.5. secionado/collapse
 
+6.6 colores 
+6.7 cambiar entrenamiento.
+7.8 comida post entrenamiento
+
+----
 
 
 
 * menú porciones (menuless)
-*canbiar entrenamiento.
-*comida post entrenamiento
-*colores 
 *establecer un mínimo de comidas en 1
 ?correciones minimo de calorias
-*entrenamiento 
 
 
 ------

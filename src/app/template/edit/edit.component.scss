@@ -35,3 +35,16 @@ table {
         color: red;
     }
 }
+
+.box {
+    height: 20px;
+    width: 90%;
+    border:  1px solid black;
+    text-align: center;
+    margin: 10px auto;
+    border-radius: 35px;
+    cursor: pointer;
+    &.check {
+        background: lightblue;
+    }
+}

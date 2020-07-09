@@ -26,6 +26,9 @@ import { trainingComponent } from './template/trainig/training.component';
 import { ChComponent } from './template/ch/ch.component';
 import { EditComponent } from './template/edit/edit.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { ToastrModule } from 'ngx-toastr';
+import { DialogComponent } from './component/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -41,9 +44,15 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FoodComponent,
     trainingComponent,
     ChComponent,
-    EditComponent
+    EditComponent,
+    DialogComponent
   ],
   imports: [
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+    }),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -57,6 +66,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     HttpClientModule,
     SliderModule,
     MatExpansionModule,
+    MatDialogModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

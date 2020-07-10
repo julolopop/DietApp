@@ -29,6 +29,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { ToastrModule } from 'ngx-toastr';
 import { DialogComponent } from './component/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -49,9 +50,9 @@ import {MatDialogModule} from '@angular/material/dialog';
   ],
   imports: [
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 10000,
       positionClass: 'toast-bottom-center',
-      preventDuplicates: true,
+      preventDuplicates: false,
     }),
     BrowserModule,
     AppRoutingModule,
@@ -67,7 +68,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     SliderModule,
     MatExpansionModule,
     MatDialogModule,
-    
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

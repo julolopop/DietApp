@@ -1,4 +1,3 @@
-
 <br><br>
 
 <table>
@@ -17,10 +16,10 @@
         <td> {{totalPorciones}} </td>
         <td>
             <button class="left" (click)="totalPorcionesEdit(-1)">-</button>
-            {{totalPorcionesMax}} 
+            {{totalPorcionesMax}}
             <button class="rigth" (click)="totalPorcionesEdit(+1)">+</button>
         </td>
-        <td class="check" [ngClass]="{'error': totalPorcionesMax !== totalPorcionesSum}"> {{totalPorcionesSum}}  </td>
+        <td class="check" [ngClass]="{'error': totalPorcionesMax !== totalPorcionesSum}"> {{totalPorcionesSum}} </td>
     </tr>
 </table>
 
@@ -32,17 +31,32 @@
     <mat-accordion>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
             <mat-expansion-panel-header>
-              <mat-panel-title style="
+                <mat-panel-title style="
               display: flex;
               justify-content: center;">
-                  Entrenamiento
-              </mat-panel-title>
+                    Entrenamiento / Comida
+                </mat-panel-title>
 
             </mat-expansion-panel-header>
 
-            <div *ngFor="let item of training;let i = index" class="box" (click)="check(i)" [class.check]="checked[i]">
-                {{item.text}}
+
+            <div>
+                <mat-tab-group>
+                    <mat-tab label="Entrenamiento">
+                        <div *ngFor="let item of training;let i = index" class="box" (click)="check(item.value)"
+                            [class.check]="checked[item.value]">
+                            {{item.text}}
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Comida">
+                        <div *ngFor="let item of food;let i = index" class="box" (click)="checkFood(i)"
+                            [class.check]="this.user.food[i]">
+                            {{item}}
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
             </div>
+
 
         </mat-expansion-panel>
     </mat-accordion>
@@ -51,55 +65,61 @@
     <br>
 
     <mat-accordion *ngFor="let item of porcionesComidaMod; let i = index">
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{item.nameView}}
-            </mat-panel-title>
-            <mat-panel-description>
-                <span>{{item.training}}</span>
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          
-          <div>
-            <table>
-                <tr>
-                    <th>Defecto</th>
-                    <th>Nuevo objetivo</th>
-                    <th>Actual</th>
-                </tr>
-                <tr>
-                    <td>{{porcionesComida[i].totalComida}}</td>
-                    <td><button class="left" (click)="totalPorcionesComidaEdit(item,-1)">-</button> {{item.totalComidaMax}} <button class="rigth" (click)="totalPorcionesComidaEdit(item,1)">+</button></td>
-                    <td  class="check" [ngClass]="{'error': item.totalComidaMax !== item.totalComida}">{{item.totalComida}}</td>
-                </tr>
-            </table>
-            <br>
-            <br>
-            <table>
-                <tr>
-                    <th>typo</th>
-                    <th>Defecto</th>
-                    <th>Modificado</th>
-                </tr>
-                <tr>
-                    <td> Proteinas </td>
-                    <td> {{porcionesComida[i].porcionesP}}</td>
-                    <td><button class="left" (click)="change(item ,'porcionesP',-1)">-</button> {{item.porcionesP}} <button class="rigth" (click)="change(item ,'porcionesP',1)">+</button></td>
-                </tr>
-                <tr>
-                    <td> Carboidratos </td>
-                    <td> {{porcionesComida[i].porcionesC}}</td>
-                    <td><button class="left"  (click)="change(item ,'porcionesC',-1)">-</button> {{item.porcionesC}} <button class="rigth" (click)="change(item ,'porcionesC',1)">+</button></td>
-                </tr>
-                <tr>
-                    <td> Grasas </td>
-                    <td> {{porcionesComida[i].porcionesG}}</td>
-                    <td><button class="left"  (click)="change(item ,'porcionesG',-1)">-</button> {{item.porcionesG}} <button class="rigth" (click)="change(item ,'porcionesG',1)">+</button></td>
-                </tr>
-            </table>
-          </div>
-    
+        <mat-expansion-panel *ngIf="item.active" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{item.nameView}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    <span>{{item.training}}</span>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div>
+                <table>
+                    <tr>
+                        <th>Defecto</th>
+                        <th>Nuevo objetivo</th>
+                        <th>Actual</th>
+                    </tr>
+                    <tr>
+                        <td>{{porcionesComida[i].totalComida}}</td>
+                        <td><button class="left" (click)="totalPorcionesComidaEdit(item,-1)">-</button>
+                            {{item.totalComidaMax}} <button class="rigth"
+                                (click)="totalPorcionesComidaEdit(item,1)">+</button></td>
+                        <td class="check" [ngClass]="{'error': item.totalComidaMax !== item.totalComida}">
+                            {{item.totalComida}}</td>
+                    </tr>
+                </table>
+                <br>
+                <br>
+                <table>
+                    <tr>
+                        <th>typo</th>
+                        <th>Defecto</th>
+                        <th>Modificado</th>
+                    </tr>
+                    <tr>
+                        <td> Proteinas </td>
+                        <td> {{porcionesComida[i].porcionesP}}</td>
+                        <td><button class="left" (click)="change(item ,'porcionesP',-1)">-</button> {{item.porcionesP}}
+                            <button class="rigth" (click)="change(item ,'porcionesP',1)">+</button></td>
+                    </tr>
+                    <tr>
+                        <td> Carboidratos </td>
+                        <td> {{porcionesComida[i].porcionesC}}</td>
+                        <td><button class="left" (click)="change(item ,'porcionesC',-1)">-</button> {{item.porcionesC}}
+                            <button class="rigth" (click)="change(item ,'porcionesC',1)">+</button></td>
+                    </tr>
+                    <tr>
+                        <td> Grasas </td>
+                        <td> {{porcionesComida[i].porcionesG}}</td>
+                        <td><button class="left" (click)="change(item ,'porcionesG',-1)">-</button> {{item.porcionesG}}
+                            <button class="rigth" (click)="change(item ,'porcionesG',1)">+</button></td>
+                    </tr>
+                </table>
+            </div>
+
         </mat-expansion-panel>
-      </mat-accordion>
-    </div>
+    </mat-accordion>
+</div>

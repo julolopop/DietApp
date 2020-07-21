@@ -25,6 +25,7 @@ import { FoodComponent } from './template/food/food.component';
 import { trainingComponent } from './template/trainig/training.component';
 import { ChComponent } from './template/ch/ch.component';
 import { EditComponent } from './template/edit/edit.component';
+import { MenuComponent } from './template/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { EditComponent } from './template/edit/edit.component';
     FoodComponent,
     trainingComponent,
     ChComponent,
-    EditComponent
+    EditComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

@@ -26,6 +26,11 @@ import { trainingComponent } from './template/trainig/training.component';
 import { ChComponent } from './template/ch/ch.component';
 import { EditComponent } from './template/edit/edit.component';
 import { MenuComponent } from './template/menu/menu.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { ToastrModule } from 'ngx-toastr';
+import { DialogComponent } from './component/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -42,9 +47,15 @@ import { MenuComponent } from './template/menu/menu.component';
     trainingComponent,
     ChComponent,
     EditComponent,
-    MenuComponent
+    MenuComponent,
+    DialogComponent
   ],
   imports: [
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: false,
+    }),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -57,6 +68,9 @@ import { MenuComponent } from './template/menu/menu.component';
     AngularFireAuthModule,
     HttpClientModule,
     SliderModule,
+    MatExpansionModule,
+    MatDialogModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

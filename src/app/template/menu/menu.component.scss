@@ -1,0 +1,19 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+tr {
+    text-align: center;
+}
+
+th {
+    background-color: lightslategray;
+    &.head {
+        background-color: lightsteelblue;
+    }
+}
+
+table {
+    width: 100%;
+}

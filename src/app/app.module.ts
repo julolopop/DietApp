@@ -31,6 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { DialogComponent } from './component/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ItemComponent } from './component/item/item.component';
+import { MenuListComponent } from './template/menu-list/menu-list.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     ChComponent,
     EditComponent,
     MenuComponent,
-    DialogComponent
+    DialogComponent,
+    ItemComponent,
+    MenuListComponent
   ],
   imports: [
     ToastrModule.forRoot({

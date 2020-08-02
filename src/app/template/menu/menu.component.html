@@ -1,0 +1,128 @@
+<input type="date">
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+desayuno
+            </mat-panel-title>
+            <mat-panel-description>
+
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div>
+            <div>
+                <h3>Total Diario : </h3><span>0 de 10</span>
+            </div>
+            <div>
+                <h2>alimentos proteicos</h2>
+                <h2>&nbsp;&nbsp;(i) alimentos proteicos grasos</h2>
+                <h4>Total : </h4><span>0 de <button class="left" >-</button> 0
+                    <button class="rigth" >+</button></span>
+                <table>
+                    <tr>
+                        <th>porciones</th>
+                        <th>alimento</th>
+                        <th>peso</th>
+                    </tr>
+                    <tr *ngFor="let item of itemsPg">
+                        <td>
+                            <button class="left" (click)="change(item ,-1)">-</button> {{item.p}}
+                            <button class="rigth" (click)="change(item ,1)">+</button>
+                        </td>
+                        <td>{{item.food}}</td>
+                        <td>{{item.g * item.p}}g</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td (click)="add('pg')"><img src="assets\icon\mas.svg" alt="" width="25"></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <h2>&nbsp;&nbsp;alimentos proteicos magros</h2>
+                <h4>Total : </h4><span>0 de 10</span>
+                <table>
+                    <tr>
+                        <th>porciones</th>
+                        <th>alimento</th>
+                        <th>peso</th>
+                    </tr>
+                    <tr *ngFor="let item of itemsP">
+                        <td>
+                            <button class="left" (click)="change(item ,-1)">-</button> {{item.p}}
+                            <button class="rigth" (click)="change(item ,1)">+</button>
+                        </td>
+                        <td>{{item.food}}</td>
+                        <td>{{item.g * item.p}}g</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td (click)="add('p')"><img src="assets\icon\mas.svg" alt="" width="25"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h2>alimentos ricos en grasa</h2>
+                <div>
+                    <h4>porciones restantes : </h4><span>10</span>
+                </div>
+                <table>
+                    <tr>
+                        <th>porciones</th>
+                        <th>alimento</th>
+                        <th>peso</th>
+                    </tr>
+                    <tr *ngFor="let item of itemsG">
+                        <td>
+                            <button class="left" (click)="change(item ,-1)">-</button> {{item.p}}
+                            <button class="rigth" (click)="change(item ,1)">+</button>
+                        </td>
+                        <td>{{item.food}}</td>
+                        <td>{{item.g * item.p}}g</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td (click)="add('g')"><img src="assets\icon\mas.svg" alt="" width="25"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <h2>alimentos ricos en carbohidratos</h2>
+                <h4>Total : </h4><span>0 de 10</span>
+                <table>
+                    <tr>
+                        <th>porciones</th>
+                        <th>alimento</th>
+                        <th>peso</th>
+                    </tr>
+                    <tr *ngFor="let item of itemsC">
+                        <td>
+                            <button class="left" (click)="change(item ,-1)">-</button> {{item.p}}
+                            <button class="rigth" (click)="change(item ,1)">+</button>
+                        </td>
+                        <td>{{item.food}}</td>
+                        <td>{{item.g * item.p}}g</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td (click)="add('c')"><img src="assets\icon\mas.svg" alt="" width="25"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+
+    </mat-expansion-panel>
+</mat-accordion>

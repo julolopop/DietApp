@@ -12,6 +12,7 @@ import { trainingComponent } from './template/trainig/training.component';
 import { ChComponent } from './template/ch/ch.component';
 import { EditComponent } from './template/edit/edit.component';
 import { MenuComponent } from './template/menu/menu.component';
+import { MenuListComponent } from './template/menu-list/menu-list.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     { path: 'ch', component: ChComponent },
     { path: 'edit', component: EditComponent },
     { path: 'menu', component: MenuComponent },
+    { path: 'list', component: MenuListComponent },
     { path: '', redirectTo :'gender' , pathMatch: 'full' },
   ]},
   { path: 'info', component: InfoComponent },

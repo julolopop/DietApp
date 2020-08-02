@@ -126,6 +126,63 @@ ALGORITMO Reparto de porciones restantes y por tipo en cada comida
 ?correciones minimo de calorias
 
 
+pregunta ??
+porciones restantes 
+porciones ||  producto||  gramos totales
+
+
 ------
 
 7.  
+
+ELEMENTOS DE LA INTERFAZ DEL SELECTOR DE ALIMENTOS:
+-Títulos de las comidas que se hayan seleccionado para realizar
+-Partes de cada comida: “alimentos proteicos” (con los subtipos que explico ahora después: PG y P)
+“alimentos ricos en grasa” (G) y “alimentos ricos en carbohidratos” (CHs).
+---Icono que despliega un bocadillo con información sobre los alimentos proteicos grasos.
+-Herramienta para la selección de alimentos proteicos grasos.
+-Contador del no de porciones restantes: en el total del día (vendrá arriba del todo, para que cuando esté
+todo minimizado se vea que todavía faltan esas porciones), el total de la comida (al lado del título de cada
+comida) y en el total de las partes de cada comida (al lado de título también).
+-Contador/selector del no de porciones de cada alimento seleccionado: situado al lado de cada alimento
+seleccionado tras darle al (+)
+-El (+): herramienta llamada “selector de alimentos”. En la interfaz podría aparecer “seleccionar
+alimento” Debe estar debajo de las partes de PG, P, G y CHs.
+-Contador de gramos de cada alimento: fruto de multiplicar el no de porciones por los gramos por porción
+del alimento seleccionado.
+
+ALIMENTOS PROTEICOS-ALGORITMO Y HERRAMIENTAS VISUALES.
+-La fórmula es la de 1P + 1G = 2PG
+-Dentro del título de alimentos proteicos, deben aparecer los dos subtipos: los “alimentos proteicos
+grasos” (PG) y los “alimentos proteicos magros” (P).
+-Al lado del título de “alimentos proteicos grasos” debe aparecer el símbolo de información en el que si
+presionas te salga un bocadillo informativo.
+-Por defecto, las PG aparecerán en 0. Solo te debe permitir subir lo que es posible, es decir, de 2 en 2.
+Lógicamente, al subir las PG, bajarán las P y las G.
+ACLARACIÓN DE LA INTERFAZ:
+El despliegue de la interfaz debe ser muy similar al del anterior paso. Las comidas van en orden y dentro
+de ellas sus partes y subtipos.
+
+HERRAMIENTAS/FUNCIONALIDADES EXTRAS:
+1) “COPIAR ALIMENTO EN OTRAS COMIDAS” y “ELIMINAR ALIMENTO”
+Cuando ya has seleccionado un alimento tras darle al botón del +, si mantienes presionado en ese
+alimento te debe dar las opciones de Copiarlo en otras comidas y eliminarlo. Tras darle a copiar, habrá
+que seleccionar en qué comidas y cuántas porciones en cada comida.
+2)“MOVER PORCIONES ENTRE COMIDAS” modificar (popUP)
+La última función extra en esta pantalla será el mover porciones de una comida a otra. No modifica la
+cantidad total, solo que manda porciones de una parte a otra. Eso afectaría a las porciones restantes de una
+comida o subtipo (lógico, añade una porción de ese tipo al objetivo de esa comida y se lo resto a la
+comida de origen)
+Hay dos opciones para implementarlo: que salga al mantener presionado un alimento junto a las otras
+opciones; o que aparezca al final del todo bien escrito; o en las 2
+Si sale al mantener presionado, hay que seleccionar cuántas porciones y a qué otras comidas las
+mandamos. Si es abajo del todo, como no se sabe ni qué tipo de porción es ni qué alimento (esto es
+innecesario, ya que se seleccionaría en la comida de destino), habría que seleccionar qué porciones vamos
+a mover y a dónde.
+ÚLTIMA INTERFAZ: EXPORTAR A PDF JAJAJA
+Me refiero a lo que ya hablamos, que tras haber seleccionado los alimentos parte por parte, aparezca
+luego en limpio un listado solo con los gramos de cada alimento y separado por comida.
+
+
+MOVER PORCIONES ENTRE COMIDAS: ALGORITMO:
+Selección de comida de origen -> Selección del tipo de porciones y la cantidad que se va a mover -> comida de destino
